@@ -1,4 +1,10 @@
 #include<stdio.h>
+#include<string.h>
+
+struct rev{
+    char revStr[100];
+    int index;
+};
 
 int stringLen(char* str){
     int i=0;
@@ -14,34 +20,57 @@ void swap(char *a, char *b){
     *b = temp;
 }
 
-void printRev(char* str){
-    int j = stringLen(str)-1;
-    for(int i=0; i<(stringLen(str)+1)/2; i++){
-        swap(&str[i], &str[j]);
-        j--;
-    }
+void reverse(char *a, int size){
+    for(int i=0; i<(size/2); i++)
+        swap(&a[i], &a[size-1-i]);
+}
 
-    printf("%s ", str);
+void reset(char* str){
+    int i=0;
+    while(str[i])
+        str[i++] = '\0';
+
+}
+
+void updateRev(char* str, struct rev *ptr){
+    int size = stringLen(str);
+    reverse(str, size);
+    for(int i=0; i<size; i++)
+        ptr->revStr[ptr->index++] = str[i];
+
+    ptr->revStr[ptr->index++] = ' ';
 
 }
 
 void revByWord(char* str){
-    int i = stringLen(str)-2;
-    while(i>=0){
-        int j = 0;
-        char temp[100];
-        while(str[i]!=32)
-            temp[j++] = str[i--];
-        temp[j] = '\0';
-        printRev(temp);
-        i--;
+    struct rev revString = {{'\0'}, 0};
+
+    char temp[100] = {'\0'};
+    int i=0, j=0;
+    while(str[i]){
+        if((int)str[i] == 32){
+            updateRev(temp, &revString);
+            reset(temp);
+            j=0;
+            i++;
+        }
+        else{
+            temp[j++] = str[i];
+            i++;
+        }
     }
+    updateRev(temp, &revString);
+    revString.revStr[(--revString.index)] = '\0';
+
+    reverse(revString.revStr, revString.index);
+    puts(revString.revStr);
 }
 
 int main(){
     char str[100];
     printf("Input String: ");
     fgets(str, 100, stdin);
+    str[stringLen(str)-1] = '\0';
 
     revByWord(str);
 
