@@ -24,7 +24,7 @@ void swap(char *a, char *b){
 
 void printRev(char* str){
     int len = strLength(str);
-    for(int i=0; i<=(len/2); i++)
+    for(int i=0; i<(len/2); i++)
         swap(&str[i], &str[len-i-1]);
 
     puts(str);
