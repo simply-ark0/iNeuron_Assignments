@@ -8,11 +8,12 @@ struct rev{
 
 int stringLen(char* str){
     int i=0;
-    while(str[i]!='\0')
+    while(str[i])
         i++;
 
     return i;
 }
+
 
 void swap(char *a, char *b){
     char temp = *a;
@@ -48,12 +49,14 @@ void revByWord(char* str){
     char temp[100] = {'\0'};
     int i=0, j=0;
     while(str[i]){
-        if((int)str[i] == 32){
+        if(((int)str[i] == 32) && ((int)str[i-1]!=32)){
             updateRev(temp, &revString);
             reset(temp);
             j=0;
             i++;
         }
+        else if(((int)str[i] == 32) && ((int)str[i-1]==32))   //multi-space between words handled
+            i++;
         else{
             temp[j++] = str[i];
             i++;

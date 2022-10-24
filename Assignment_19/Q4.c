@@ -3,7 +3,7 @@
 
 int serach(int r, int c, char arr[r][c], char* str) {
     for(int i=0; i<r; i++)
-        if(!strcmp(arr[i], str))
+        if(strcmp(arr[i], str) == 0)
             return i;
 
     return -1;

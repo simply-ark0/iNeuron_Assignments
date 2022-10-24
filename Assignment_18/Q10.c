@@ -5,44 +5,25 @@ int stringLen(char* str){
     while(str[i]!='\0')
         i++;
 
-    return i-1;
-}
-
-void sort(char* str){
-
-    // insertion sort
-   for(int i=0; i<stringLen(str); i++){
-        char temp = str[i];
-        int j = i-1;
-        while(j>=0 && str[j]>temp){
-            str[j+1] = str[j];
-            j--;
-        }
-        str[j+1] = temp;
-   }
-    
+    return i;
 }
 
 void printRepeat(char* str){
-    sort(str);
-    int count = 1;
-    for(int i=0; i<stringLen(str)-1; i++)
-       if(str[i] == str[i+1])
-           count++;
-        else{
-            if(count!=1)
-                printf("%c is repeated %d times.\n", str[i], count);
-            count = 1;
-        }
-    if(str[stringLen(str)-1] == str[stringLen(str)-2])
-        printf("%c is repeated %d times.\n", str[stringLen(str)-1], count);
-        
+    // hashing
+    int map[128] = {0};
+    for(int i=0; str[i]; i++)
+        map[str[i]]++;
+
+    for(int i=0; i<128; i++)
+        if(map[i]>1)
+            printf("%c is repeated %d times\n", i, map[i]);
 }
 
 int main(){
     char str[100];
     printf("Input String: ");
     fgets(str, 100, stdin);
+    str[stringLen(str)-1] = '\0';
 
     printRepeat(str);
 
