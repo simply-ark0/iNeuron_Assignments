@@ -3,11 +3,12 @@
 #include<stdlib.h>
 
 short search(int r, int c, char arr[r][c], char* str){
+    int index = -1;
     for(int i=0; i<r; i++)
         if(strcmp(arr[i], str) == 0)
-            return i;
+            index = i;;
     
-    return -1;
+    return index;
 }
 
 short minDistance(int r, int c, char arr[r][c], char* word1, char* word2){
@@ -20,7 +21,7 @@ short minDistance(int r, int c, char arr[r][c], char* word1, char* word2){
     }
 
     int d1 = abs(w1-w2) - 1;
-    int d2 = r - (d1 + 2);
+    int d2 = r - (d1 + 2);  // considering circular list (as per the example provided)
 
     return (d1>=d2)?d2:d1;
 }
