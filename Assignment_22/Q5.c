@@ -20,6 +20,11 @@ int main(){
     scanf("%d", &len);
 
     int *arr = (int*)malloc(len*sizeof(int));
+    if(arr == NULL){
+        printf("Memory Allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+
     int sum = 0;
 
     for(int i=0; i<len; i++){

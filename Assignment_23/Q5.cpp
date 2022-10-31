@@ -8,7 +8,7 @@ int main(){
     cout<<"Enter length, breadth and height (spearated by spaces): ";
     cin>>l>>b>>h;
 
-    cout<<"Area of Cuboid = "<<2*(l*b + b*h + l*h);
+    cout<<"Area of Cuboid = "<<(l*b*h);
 
     return 0;
 

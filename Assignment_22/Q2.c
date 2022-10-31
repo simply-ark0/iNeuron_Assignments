@@ -4,6 +4,11 @@
 int* declare(int n){
     int *ptr = (int*)malloc(n*sizeof(int));
 
+    if(ptr == NULL){
+        printf("Memory Allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+
     return ptr;
 }
 
