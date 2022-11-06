@@ -4,29 +4,29 @@ using namespace std;
 class Date{
 
     private:
-        short h;
-        short m;
-        short s;
+        short dd;
+        short mm;
+        short yy;
     
     public:
         Date(){
-            this->h = 12;
-            this->m = 0;
-            this->s = 0;
+            this->dd = 12;
+            this->mm = 0;
+            this->yy = 0;
         }
 
         void setDate(short h, short m, short s){
-            this->h = h;
-            this->m = m;
-            this->s = s;
+            this->dd = h;
+            this->mm = m;
+            this->yy = s;
         }
 
         void displayDate(){
-            (this->h<10)?(cout<<"[0"<<this->h):(cout<<"["<<this->h);
+            (this->dd<10)?(cout<<"[0"<<this->dd):(cout<<"["<<this->dd);
             cout<<" : ";
-            (this->m<10)?(cout<<"0"<<this->m):(cout<<this->m);
+            (this->mm<10)?(cout<<"0"<<this->mm):(cout<<this->mm);
             cout<<" : ";
-            (this->s<10)?(cout<<"0"<<this->s)<<"]"<<endl:(cout<<this->s)<<"]"<<endl;
+            (this->yy<10)?(cout<<"200"<<this->yy)<<"]"<<endl:(cout<<"20"<<this->yy)<<"]"<<endl;
         }
 };
 
