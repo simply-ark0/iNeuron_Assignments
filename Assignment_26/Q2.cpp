@@ -49,6 +49,9 @@ class Time{
 
             this->h = this->h%12;
 
+            if(this->h == 0)
+                this->h = 12;
+
         }
         Time add(Time T){
             Time temp;

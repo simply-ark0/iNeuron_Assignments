@@ -18,36 +18,34 @@ class Fraction{
 
         // pre-inc
         Fraction operator++(){
-            Fraction temp;
-            temp.numerator = ++this->numerator;
-            temp.denominator = ++this->denominator;
+            ++this->numerator;
+            ++this->denominator;
 
-            return temp;
+            return *this;
         }
 
         // post-inc
         Fraction operator++(int){
-            Fraction temp;
-            temp.numerator = this->numerator++;
-            temp.denominator = this->denominator++;
+            Fraction temp = *this;
+            this->numerator++;
+            this->denominator++;
 
             return temp;
         }
 
         // pre-dcr
         Fraction operator--(){
-            Fraction temp;
-            temp.numerator = --this->numerator;
-            temp.denominator = --this->denominator;
+            --this->numerator;
+            --this->denominator;
 
-            return temp;
+            return *this;
         }
 
         // post-dcr
         Fraction operator--(int){
-            Fraction temp;
-            temp.numerator = this->numerator--;
-            temp.denominator = this->denominator--;
+            Fraction temp = *this;
+            this->numerator--;
+            this->denominator--;
 
             return temp;
         }

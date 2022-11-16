@@ -19,6 +19,15 @@ class Time{
             this->min = min;
             this->sec = sec;
         }
+        void normalize(){
+            this->min += this->sec/60;
+            this->sec %= 60;
+            this->hour += this->min/60;
+            this->min %= 60;
+            this->hour %= 12;
+            if(this->hour == 0)
+                this->hour = 12;
+        }
         friend istream& operator>>(istream&, Time&);
         friend ostream& operator<<(ostream&, Time&);
 
@@ -38,6 +47,7 @@ istream& operator>>(istream& input, Time& obj){
     input>>obj.min;
     cout<<"\nEnter Seconds  :";
     input>>obj.sec;
+    obj.normalize();
 
     return input;
 }

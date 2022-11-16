@@ -24,31 +24,12 @@ class Bill{
         }
 
         int calculateBill(){
-            double amt = 0.0; 
-            unsigned int tempU = this->units;
-
-            if(tempU>100){
-                amt = 120;
-                tempU -= 100;
-            }
-            else{
-                amt = tempU*1.20;
-                return amt;
-            }
-
-            if(tempU>100){
-                amt += 200;
-                tempU -= 100;
-            }
-            else{
-                amt += tempU*2;
-                return amt;
-            }
-
-            if(tempU!=0)
-                amt += tempU*3;
-
-            return amt;
+            if(this->units<=100)
+                return this->units*1.20;
+            else if(this->units<=200)
+                return 120 + (this->units-100)*2;
+            else
+                return 520 + (this->units-200)*3;
         }
 
 };
